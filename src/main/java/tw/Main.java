@@ -6,6 +6,7 @@ import tw.commands.GuessInputCommand;
  * Created by jxzhong on 2017/5/16.
  */
 public class Main {
+	
 
     private static final int RUN_TIMES = 6;
 
@@ -15,4 +16,6 @@ public class Main {
             System.out.println(input);
         }
     }
+    
+    
 }
