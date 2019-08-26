@@ -50,20 +50,20 @@ public class LuckGame {
 		return map;
 	}
 
-//	public String positionJudge(Map<Integer, String> map) {
-//		Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
-//		int countA = 0;
-//		int countB = 0;
-//		while (it.hasNext()) {
-//			Entry<Integer, String> entry = it.next();
-//			int position = entry.getKey();
-//			if (answers[position].equals(entry.getValue())) {
-//				countA++;
-//				continue;
-//			}
-//			countB++;
-//		}
-//
-//		return countA + "A" + countB + "B";
-//	}
+	public String positionJudge(Map<Integer, String> map) {
+		Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
+		int countA = 0;
+		int countB = 0;
+		while (it.hasNext()) {
+			Entry<Integer, String> entry = it.next();
+			int position = entry.getKey();
+			if (answers[position].equals(entry.getValue())) {
+				countA++;
+				continue;
+			}
+			countB++;
+		}
+
+		return countA + "A" + countB + "B";
+	}
 }
