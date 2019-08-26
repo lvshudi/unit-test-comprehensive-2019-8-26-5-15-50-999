@@ -10,14 +10,14 @@ public class LuckGame {
 	private static String answer = "1234";
 	private String[] answers = answer.split("");
 
-//	public String runGame(String input) {
-//		if (inputValid(input)) {
-//			String result = positionJudge(valueJudge(input));
-//			return result;
-//		} else {
-//			return "输入错误";
-//		}
-//	}
+	public String runGame(String input) {
+		if (inputValid(input)) {
+			String result = positionJudge(valueJudge(input));
+			return result;
+		} else {
+			return "输入错误";
+		}
+	}
 	
 	// 验证输入是否合法
 	public boolean inputValid(String input) {
