@@ -17,6 +17,7 @@ public class LuckGame {
 			resultFormat(result);
 			return result[0];
 		} else {
+			System.out.println("输入错误");
 			return "输入错误";
 		}
 	}
@@ -84,9 +85,9 @@ public class LuckGame {
 			System.out.println(result[0] + "都错了");
 		} else {
 			for (String string : prompt) {
-				outPut += "和" + string;
+				outPut += "和"+string;
 			}
-			System.out.println(outPut + "位置错误");
+			System.out.println(result[0] + " " + outPut + "位置错误");
 		}
 
 	}
