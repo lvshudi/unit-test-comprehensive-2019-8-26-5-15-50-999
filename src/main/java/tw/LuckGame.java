@@ -10,18 +10,20 @@ public class LuckGame {
 	private static String answer = "1234";
 	private String[] answers = answer.split("");
 
+	// 整合
 	public String runGame(String input) {
 		if (inputValid(input)) {
-			String result = positionJudge(valueJudge(input));
-			return result;
+			String[] result = positionJudge(valueJudge(input));
+			resultFormat(result);
+			return result[0];
 		} else {
 			return "输入错误";
 		}
 	}
-	
+
 	// 验证输入是否合法
 	public boolean inputValid(String input) {
-		String[] inputs = input.split("");
+		String[] inputs = input.split(" ");
 		if (inputs.length != 4) {
 			return false;
 		} else {
@@ -37,7 +39,7 @@ public class LuckGame {
 	}
 
 	public Map<Integer, String> valueJudge(String input) {
-		String[] inputs = input.split("");
+		String[] inputs = input.split(" ");
 
 		Map map = new HashMap<Integer, String>();
 		for (int i = 0; i < answers.length; i++) {
@@ -50,10 +52,12 @@ public class LuckGame {
 		return map;
 	}
 
-	public String positionJudge(Map<Integer, String> map) {
+	public String[] positionJudge(Map<Integer, String> map) {
 		Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
 		int countA = 0;
 		int countB = 0;
+		String[] result = new String[2];
+		String errorNumber = "";
 		while (it.hasNext()) {
 			Entry<Integer, String> entry = it.next();
 			int position = entry.getKey();
@@ -61,9 +65,29 @@ public class LuckGame {
 				countA++;
 				continue;
 			}
+			errorNumber += entry.getValue();
 			countB++;
 		}
+		result[0] = countA + "A" + countB + "B";
+		result[1] = errorNumber;
+		return result;
+	}
 
-		return countA + "A" + countB + "B";
+	// resultFormat
+	public void resultFormat(String[] result) {
+		String[] results = result[0].split("");
+		String[] prompt = result[1].split("");
+		String outPut = "";
+		if (results[0].equals("4")) {
+			System.out.println(result[0] + " 胜利，一切正确");
+		} else if (results[0].equals("0") && results[2].equals("0")) {
+			System.out.println(result[0] + "都错了");
+		} else {
+			for (String string : prompt) {
+				outPut += "和" + string;
+			}
+			System.out.println(outPut + "位置错误");
+		}
+
 	}
 }
