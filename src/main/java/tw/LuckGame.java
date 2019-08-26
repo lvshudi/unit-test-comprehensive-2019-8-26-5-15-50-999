@@ -35,21 +35,21 @@ public class LuckGame {
 		}
 		return true;
 	}
-//
-//	public Map<Integer, String> valueJudge(String input) {
-//		String[] inputs = input.split("");
-//
-//		Map map = new HashMap<Integer, String>();
-//		for (int i = 0; i < answers.length; i++) {
-//			for (int j = 0; j < inputs.length; j++) {
-//				if (inputs[j].equals(answers[i])) {
-//					map.put(j, inputs[j]);
-//				}
-//			}
-//		}
-//		return map;
-//	}
-//
+
+	public Map<Integer, String> valueJudge(String input) {
+		String[] inputs = input.split("");
+
+		Map map = new HashMap<Integer, String>();
+		for (int i = 0; i < answers.length; i++) {
+			for (int j = 0; j < inputs.length; j++) {
+				if (inputs[j].equals(answers[i])) {
+					map.put(j, inputs[j]);
+				}
+			}
+		}
+		return map;
+	}
+
 //	public String positionJudge(Map<Integer, String> map) {
 //		Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
 //		int countA = 0;
