@@ -57,12 +57,14 @@ public class LuckGame {
 		Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
 		int countA = 0;
 		int countB = 0;
-		String[] result = new String[2];
+		String[] result = new String[3];
 		String errorNumber = "";
+		String correctNumber = "";
 		while (it.hasNext()) {
 			Entry<Integer, String> entry = it.next();
 			int position = entry.getKey();
 			if (answers[position].equals(entry.getValue())) {
+				correctNumber += entry.getValue();
 				countA++;
 				continue;
 			}
@@ -71,23 +73,29 @@ public class LuckGame {
 		}
 		result[0] = countA + "A" + countB + "B";
 		result[1] = errorNumber;
+		result[2] = correctNumber;
 		return result;
 	}
 
 	// resultFormat
 	public void resultFormat(String[] result) {
 		String[] results = result[0].split("");
-		String[] prompt = result[1].split("");
-		String outPut = "";
+		String[] falsePrompt = result[1].split("");
+		String[] correctPrompt = result[2].split("");
+		String falseOutPut = "";
+		String correctOutput = "";
 		if (results[0].equals("4")) {
 			System.out.println(result[0] + " 胜利，一切正确");
 		} else if (results[0].equals("0") && results[2].equals("0")) {
 			System.out.println(result[0] + "都错了");
 		} else {
-			for (String string : prompt) {
-				outPut += "和"+string;
+			for (String string : falsePrompt) {
+				falseOutPut += ","+string;
 			}
-			System.out.println(result[0] + " " + outPut + "位置错误");
+			for (String string : correctPrompt) {
+				correctOutput += "," + string;
+			}
+			System.out.println(result[0] + " " + correctOutput + "正确" + falseOutPut + "位置错误");
 		}
 
 	}
